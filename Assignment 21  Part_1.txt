@@ -1,0 +1,38 @@
+//Execute all these commands in the MongoDB Shell
+
+//Create Employee Database
+use employee
+
+//Create emp collection
+use emp 
+
+//Create emp (Table) Collection and insert a multiple Record.
+db.emp.insertMany([
+	{ 	Ename:"Rajashaker",
+		Department:"Clerical Staff",
+		Designation : "Development Staff",
+		Salary : 3000,
+		DateofJoining: new Date(2000,01,04,0,0),
+		City : "Delhi" },
+	{ Ename:"Samual", Department:"Clerical Staff", Designation : "DevelopmentStaff", Salary : 5000, DateofJoining: new Date(2001,01,01,0,0), City : "Delhi" },
+	{ Ename:"Shankar", Department:"Support Staff", Designation : "Mangager", Salary : 5000, DateofJoining: new Date(2000,01,04,0,0), City : "Bangalore" },
+	{ Ename:"Shruthi", Department:"Ops Staff", Designation : "Team Leader", Salary : 15000, DateofJoining:new Date(2001,01,01,0,0), City : "Bangalore" },
+	{ Ename:"Veena", Department:"Ops Staff", Designation : "Manager", Salary : 20000, DateofJoining: new Date(2000,01,04,0,0), City : "New York" },
+	{ Ename:"Anil Kumar", Department:"Development Staff", Designation : "Developer", Salary : 25000, DateofJoining: new Date(2000,01,04,0,0), City : "New York" },
+	{ Ename:"Rohit", Department:"Development Staff", Designation : "Developer", Salary : 25000, DateofJoining: new Date(2001,01,01,0,0), City : "California" },
+	{ Ename:"Vinay", Department:"Management Staff", Designation : "Accountant", Salary : 22000, DateofJoining: new Date(2000,01,04,0,0), City : "California" },
+	{ Ename:"Sharath", Department:"Management Staff", Designation : "Managar", Salary : 30000, DateofJoining: new Date(2001,01,01,0,0), City : "Singapore" },
+	{ Ename:"Sundhar Raj", Department:"Logistic Staff", Designation : "Manager", Salary : 26000, DateofJoining: new Date(2000,01,04,0,0), City : "Singapore" }
+]);
+
+i.      db.emp.find({"Ename":"Shruthi"},{"Designation":1}).pretty();
+ii.     db.emp.find({"Salary":{$gt:7000}}).pretty();
+iii.	db.emp.find().sort({DateofJoining:1}).pretty();
+iv.     db.emp.find().sort({Salary:1}).pretty();
+v.      db.emp.find({"Salary":{$gt:5000,$lt:40000}}).pretty();
+vi.     db.emp.find({"Designation":{$ne:"Developer"} }).pretty();
+vii.    db.emp.find().sort({City:-1}).pretty();
+viii.   db.emp.find({ $and:[ {City:{$regex:/^Singa/} },{"Salary":{$gt:8000}} ] }).pretty();
+ix.     db.emp.drop();
+	    db.emp.find(); //Display all the records.
+
